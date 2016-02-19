@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom|center"
+    android:background="@drawable/bkgnd">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TrueBtn"
+            android:id="@+id/TrueBtn"
+            android:textColor="#ffffff"
+            android:background="#80000000"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/FalseBtn"
+            android:id="@+id/FalseBtn"
+            android:textColor="#ffffff"
+            android:background="#80000000"
+            android:layout_marginLeft="5dp"/>
+
+        </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prevBtn"
+            android:id="@+id/PrevBtn"
+            android:textColor="#ffffff"
+            android:background="#80000000"
+            android:layout_marginBottom="0dp"
+            android:layout_gravity="left" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nextBtn"
+            android:id="@+id/NextBtn"
+            android:textColor="#ffffff"
+            android:background="#80000000"
+            android:layout_marginBottom="0dp"
+            android:layout_gravity="end"/>
+    </FrameLayout>
+</LinearLayout>

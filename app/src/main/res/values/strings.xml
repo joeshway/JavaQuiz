@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">JavaQuiz</string>
+    <string name="question1">Whenever the &amp;&amp; operator is used, such as in: exp1 &amp;&amp; exp2
+where exp1 and exp2 are boolean expressions, both the boolean expressions are not always evaluated.</string>
+    <string name="question2">USB-C requires a USB 3.1 bandwidth to work properly\n\n</string>
+    <string name="question3">Mac OSX is based on unix.\n\n</string>
+    <string name="question4">OSX does not need a password by default to log into root.\n\n</string>
+    <string name="TrueBtn">True</string>
+    <string name="FalseBtn">False</string>
+    <string name="True">True</string>
+    <string name="False">False</string>
+    <string name="prevBtn">Previous</string>
+    <string name="nextBtn">Next</string>
+</resources>
