@@ -1,5 +1,6 @@
 package com.example.joshy_000.javaquiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     String display;
     private static final String tag = "Main";
     private int index = 0;
+    List totalCorrect = new ArrayList();
 
 
     @Override
@@ -130,8 +133,15 @@ public class MainActivity extends AppCompatActivity {
     private void checkAnswer(String btnPress){
         if(answer == btnPress){
             display = "CORRECT!!!!";
+            if(!totalCorrect.contains(index)){
+                totalCorrect.add(index);
+            }
         }else{
             display = "Incorrect!";
+        }
+        if(totalCorrect.size() >=4){
+            totalCorrect.clear();
+            startActivity(new Intent(MainActivity.this, CongratActivity.class));
         }
 
     }
