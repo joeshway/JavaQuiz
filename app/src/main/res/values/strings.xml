@@ -11,4 +11,6 @@ where exp1 and exp2 are boolean expressions, both the boolean expressions are no
     <string name="False">False</string>
     <string name="prevBtn">Previous</string>
     <string name="nextBtn">Next</string>
+    <string name="cheatBtn">Cheat</string>
+
 </resources>

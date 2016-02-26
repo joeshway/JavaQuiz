@@ -10,7 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     //Commit test
@@ -21,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewToChange;
     String display;
     private static final String tag = "Main";
+    private static final int  cheatCode = 0;
     private int index = 0;
-    List totalCorrect = new ArrayList();
+    private Set<Integer> totalCorrect = new HashSet<>();
+    private Set<Integer> totalCheated = new HashSet<>();
 
 
     @Override
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Button fButton = (Button) findViewById(R.id.FalseBtn);
         Button pButton = (Button) findViewById(R.id.PrevBtn);
         Button nButton = (Button) findViewById(R.id.NextBtn);
+        Button cButton = (Button) findViewById(R.id.cheatBtn);
 
         tButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +67,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, display, Toast.LENGTH_SHORT).show();
             }
         });
+        cButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(MainActivity.this, Cheat.class);
+                intent.putExtra("QIndex", index);
+                startActivityForResult(intent, cheatCode);
+
+            }
+        });
 
 
         pButton.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +91,18 @@ public class MainActivity extends AppCompatActivity {
                 getRelInfo("next", question.index);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == cheatCode){
+            int outValue;
+            outValue = data.getIntExtra("result", index);
+            Toast.makeText(MainActivity.this, String.valueOf(outValue), Toast.LENGTH_SHORT).show();
+            totalCheated.add(outValue);
+
+        }
     }
 
     @Override
@@ -130,12 +156,15 @@ public class MainActivity extends AppCompatActivity {
 
         return bAnswer;
     }
-    private void checkAnswer(String btnPress){
-        if(answer == btnPress){
+    private void checkAnswer(String btnPress) {
+        if (answer == btnPress && !totalCheated.contains(index)) {
             display = "CORRECT!!!!";
-            if(!totalCorrect.contains(index)){
-                totalCorrect.add(index);
-            }
+            totalCorrect.add(index);
+
+        }else if(answer == btnPress && totalCheated.contains(index)){
+            display = "Cheating is bad!";
+            totalCorrect.add(index);
+
         }else{
             display = "Incorrect!";
         }
